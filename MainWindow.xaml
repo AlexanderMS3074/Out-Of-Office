@@ -1,0 +1,95 @@
+﻿<Window x:Class="OutOfOffice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OutOfOffice"
+        mc:Ignorable="d"
+        Title="Out of Office Message Display" 
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <!--<Setter Property="FontSize" Value="20"/>-->
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="64"/>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="64"/>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="64"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+        
+        <!--Button Content property does not allow for text alignment
+            so a TextBlock is used instead-->
+        <Button Name="btnMeeting"
+                Grid.Column="1" Grid.Row="1"
+                Background="#C00000"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="In A&#x0a;Meeting"/>
+        </Button>
+        <Button Name="btnDoNotRing"
+                Grid.Column="3" Grid.Row="1"
+                Background="#00C000"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="Do Not&#x0a;Ring Bell"/>
+        </Button>
+        <Button Name="btnShouldReturn"
+                Grid.Column="5" Grid.Row="1"
+                Background="#0000C0"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="Timed&#x0a;Return"/>
+        </Button>
+        <Button Name="btnBRB"
+                Grid.Column="1" Grid.Row="3"
+                Background="#C000C0"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="Be Right&#x0a;Back"/>
+        </Button>
+        <Button Name="btnAway"
+                Grid.Column="3" Grid.Row="3"
+                Background="#C0C000"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="Away&#x0a;From&#x0a;Office"/>
+        </Button>
+        <Button Name="btnLunch"
+                Grid.Column="5" Grid.Row="3"
+                Background="#00C0C0"
+                Click="CreateMessageDisplay">
+            <TextBlock Text="At&#x0a;Lunch"/>
+        </Button>
+        <TextBlock Name="txblTimerTest"
+                   Grid.Row="5" Grid.Column="1"
+                   Grid.ColumnSpan="3"/>
+        
+        <!--HorizontalContentAlignment needs to be overwritten
+            here to allow the button text to be centered-->
+        <Button Name="btnExit"
+                Content="Exit"
+                HorizontalContentAlignment="Center"
+                Grid.Column="5" Grid.Row="5" Click="btnExit_Click"/>
+    </Grid>
+</Window>
